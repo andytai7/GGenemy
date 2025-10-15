@@ -2,7 +2,7 @@ Package: GGenemy
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
+    person("Andy Man Yeung", "Tai", , "andy.tai@stat.ubc.ca", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -14,3 +14,9 @@ Imports:
     grDevices
 URL: https://github.com/andytai7/GGenemy
 BugReports: https://github.com/andytai7/GGenemy/issues
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr

@@ -5,6 +5,8 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/GGenemy)](https://CRAN.R-project.org/package=GGenemy)
 <!-- badges: end -->
 
 > **Enemy of Bad Practices in Data Visualization**
@@ -18,18 +20,21 @@ Think of it as a linter for your data visualizations.
 Data visualizations can inadvertently mislead or exclude audiences
 through:
 
-- 🎨 **Poor color choices** that are invisible to colorblind users (~8%
-  of males)
-- 📊 **Misleading scales** like truncated axes or dual y-axes
-- 📝 **Readability issues** like tiny text or overlapping labels
-- ♿ **Accessibility barriers** that make charts hard to interpret
+- **Poor color choices** that are invisible to colorblind users (~8% of
+  males)
+- **Misleading scales** like truncated axes or dual y-axes
+- **Readability issues** like tiny text or overlapping labels
+- **Accessibility barriers** that make charts hard to interpret
 
 GGenemy catches these issues automatically and suggests fixes.
 
 ## Installation
 
 ``` r
-# Install from GitHub (not on CRAN yet)
+# Install from CRAN (coming soon)
+install.packages("GGenemy")
+
+# Or install development version from GitHub:
 # install.packages("devtools")
 devtools::install_github("andytai7/GGenemy")
 ```
@@ -52,7 +57,7 @@ print(report)
 
 ## Key Features
 
-### 🔍 Comprehensive Auditing
+### Comprehensive Auditing
 
 ``` r
 # Check everything
@@ -62,7 +67,7 @@ gg_audit(your_plot)
 gg_audit(your_plot, checks = c("color", "scales"))
 ```
 
-### 🎨 Color Accessibility
+### Color Accessibility
 
 Detects problematic color combinations and suggests colorblind-safe
 alternatives:
@@ -71,7 +76,7 @@ alternatives:
 gg_audit_color(your_plot)
 ```
 
-### 👁️ Colorblind Simulation
+### Colorblind Simulation
 
 See how your plot appears to colorblind users:
 
@@ -82,7 +87,7 @@ gg_simulate_cvd(your_plot, type = "protan")  # red-blind
 gg_simulate_cvd(your_plot, type = "tritan")  # blue-blind
 ```
 
-### 📊 Scale & Axis Checks
+### Scale & Axis Checks
 
 Catches misleading practices:
 
@@ -95,7 +100,7 @@ Catches misleading practices:
 gg_audit_scales(your_plot)
 ```
 
-### 🔧 Automatic Fixes
+### Automatic Fixes
 
 Get code suggestions or apply fixes automatically:
 
@@ -107,7 +112,7 @@ gg_suggest_fixes(your_plot)
 fixed_plot <- gg_suggest_fixes(your_plot, auto_fix = TRUE)
 ```
 
-### ♿ Accessibility Auditing
+### Accessibility Auditing
 
 Checks for:
 
@@ -166,16 +171,15 @@ GGenemy believes in:
 - [ ] Integration with RMarkdown/Quarto for batch auditing
 - [ ] Custom rule sets
 - [ ] Interactive Shiny app for exploration
-- [ ] AI-powered suggestions (GGenemy.ai extension)
 
 ## Contributing
 
 GGenemy is in active development! Contributions are welcome:
 
-- 🐛 [Report bugs](https://github.com/yourusername/GGenemy/issues)
-- 💡 [Suggest features](https://github.com/yourusername/GGenemy/issues)
-- 📝 Improve documentation
-- 🔧 Submit pull requests
+- [Report bugs](https://github.com/andytai7/GGenemy/issues)
+- [Suggest features](https://github.com/andytai7/GGenemy/issues)
+- Improve documentation
+- Submit pull requests
 
 ## Related Packages
 
@@ -198,4 +202,4 @@ MIT © Andy Man Yeung Tai
 ------------------------------------------------------------------------
 
 **GGenemy**: Making data visualization more accessible, honest, and
-clear. 🎨⚔️
+clear.

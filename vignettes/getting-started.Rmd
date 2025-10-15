@@ -1,0 +1,145 @@
+---
+title: "Getting Started with GGenemy"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with GGenemy}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 5
+)
+```
+
+## Introduction
+
+GGenemy audits your ggplot2 visualizations to ensure they are:
+
+- **Accessible** to colorblind users (~8% of males)
+- **Honest** and not misleading
+- **Clear** and readable
+
+Think of it as a linter for data visualization!
+
+## Installation
+```{r, eval = FALSE}
+# Install from GitHub
+devtools::install_github("yourusername/GGenemy")
+```
+```{r setup}
+library(GGenemy)
+library(ggplot2)
+```
+
+## Quick Example
+
+Let's create a plot with some accessibility issues:
+```{r problematic-plot}
+# A plot using red and green (problematic for colorblind users)
+problematic_plot <- ggplot(mtcars, aes(wt, mpg, color = factor(cyl))) +
+  geom_point(size = 2) +
+  scale_color_manual(values = c("red", "green", "blue"))
+
+problematic_plot
+```
+
+Now audit it:
+```{r audit}
+report <- gg_audit(problematic_plot)
+print(report)
+```
+
+## Color Accessibility
+
+Check for color issues specifically:
+```{r color-audit}
+gg_audit_color(problematic_plot)
+```
+
+The red-green combination is a problem! Let's simulate how a colorblind user sees it:
+```{r simulate-cvd}
+# Deuteranopia (most common type of colorblindness)
+gg_simulate_cvd(problematic_plot, type = "deutan")
+```
+
+See how the red and green look very similar?
+
+## Getting Fix Suggestions
+```{r suggestions}
+gg_suggest_fixes(problematic_plot)
+```
+
+## Creating an Accessible Plot
+
+Here's an improved version:
+```{r improved-plot}
+improved_plot <- ggplot(mtcars, aes(wt, mpg, color = factor(cyl))) +
+  geom_point(size = 3) +
+  scale_color_viridis_d(option = "plasma") +
+  labs(
+    title = "Car Weight vs Fuel Efficiency",
+    x = "Weight (1000 lbs)",
+    y = "Miles Per Gallon",
+    color = "Cylinders"
+  ) +
+  theme_minimal()
+
+improved_plot
+```
+
+Check it:
+```{r check-improved}
+gg_audit(improved_plot)
+```
+
+Much better! And here's how it looks to colorblind users:
+```{r simulate-improved}
+gg_simulate_cvd(improved_plot, type = "deutan")
+```
+
+The colors are still distinguishable!
+
+## What GGenemy Checks
+
+### Color Issues
+- Red-green combinations
+- Too many colors (>7)
+- Low contrast colors
+- Rainbow palettes (perceptually non-uniform)
+
+### Scale Issues
+- Bar charts not starting at zero
+- Truncated axes
+- Dual y-axes
+- Unlabeled log scales
+- Inappropriate aspect ratios
+
+### Text Issues
+- Text too small
+- Overlapping labels
+- Missing axis labels
+- Long labels that need wrapping
+
+### Accessibility
+- Points/lines too small
+- Color as the only distinguishing feature
+- Missing titles and labels
+
+## Best Practices
+
+1. **Use colorblind-safe palettes**: viridis, plasma, ColorBrewer
+2. **Add redundant encoding**: Use both color AND shape
+3. **Label everything**: Axes, legends, titles
+4. **Start bar charts at zero**
+5. **Keep text readable**: Size 10+ points
+6. **Test with `gg_simulate_cvd()`**
+
+## Conclusion
+
+GGenemy helps you create visualizations that are accessible, honest, and clear. Run `gg_audit()` on your plots before sharing them!
+
+For more information, visit: https://github.com/andytai7/GGenemy
