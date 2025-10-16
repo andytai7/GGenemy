@@ -3,7 +3,7 @@ Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
     person("Andy Man Yeung", "Tai", , "andy.tai@stat.ubc.ca", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: GGenemy audits ggplot2 visualizations for accessibility issues, misleading practices, and readability problems. The package checks for color accessibility concerns including colorblind-unfriendly palettes, misleading scale manipulations such as truncated axes and dual y-axes, text readability issues like small fonts and overlapping labels, and general accessibility barriers. It provides comprehensive audit reports with actionable suggestions for improvement, helping data scientists create visualizations that are accessible to all users, honest in their representation, and clear in their communication.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
