@@ -4,11 +4,6 @@
 
 * This is a new release.
 
-* Checking CRAN incoming feasibility ... NOTE
-  New submission
-  
-  This NOTE is expected for new package submissions to CRAN.
-
 ## Test environments
 
 * local: macOS 15.6.1, R 4.4.1
