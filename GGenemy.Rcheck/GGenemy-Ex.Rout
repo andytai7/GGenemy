@@ -1,0 +1,389 @@
+
+R version 4.4.1 (2024-06-14) -- "Race for Your Life"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin20
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "GGenemy"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> base::assign(".ExTimings", "GGenemy-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
+> library('GGenemy')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("gg_audit")
+> ### * gg_audit
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: gg_audit
+> ### Title: Comprehensive Audit of ggplot2 Visualization
+> ### Aliases: gg_audit
+> 
+> ### ** Examples
+> 
+> library(ggplot2)
+> p <- ggplot(mtcars, aes(wt, mpg, color = factor(cyl))) +
++   geom_point() +
++   scale_color_manual(values = c("red", "green", "blue"))
+> report <- gg_audit(p)
+> print(report)
+
+=== GGenemy Audit Report ===
+
+Plot Type: GeomPoint 
+Layers: 1 
+
+CRITICAL ISSUES (2):
+  1. [color] Red-green color combination detected (problematic for 8% of males with deuteranopia/protanopia)
+  2. [labels] Label 'factor(cyl)' contains programming syntax
+
+WARNINGS (3):
+  1. [color] Some colors have low contrast - may be hard to distinguish
+  2. [scales] Unusual aspect ratio (6.01) may distort perception of relationships
+  3. [labels] Plot has no title
+
+SUGGESTIONS:
+  - Use colorblind-safe palettes: viridis::scale_color_viridis() or RColorBrewer
+  - Consider using coord_fixed() for appropriate aspect ratio
+  - White backgrounds work well, but ensure sufficient contrast with data elements
+  - Add a descriptive title: labs(title = 'Your Title Here')
+  - Clean up label: labs(colour = 'Human Readable Name')
+
+Run gg_suggest_fixes() for code recommendations.
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("gg_audit", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+
+detaching ‘package:ggplot2’
+
+> nameEx("gg_audit_accessibility")
+> ### * gg_audit_accessibility
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: gg_audit_accessibility
+> ### Title: Comprehensive Accessibility Audit
+> ### Aliases: gg_audit_accessibility
+> 
+> ### ** Examples
+> 
+> library(ggplot2)
+> p <- ggplot(mtcars, aes(wt, mpg)) + geom_point(size = 1)
+> gg_audit_accessibility(p)
+$issues
+character(0)
+
+$warnings
+[1] "Point size (1) may be too small for some viewers"
+
+$suggestions
+[1] "Increase point size: geom_point(size = 3)"                                     
+[2] "White backgrounds work well, but ensure sufficient contrast with data elements"
+
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("gg_audit_accessibility", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+
+detaching ‘package:ggplot2’
+
+> nameEx("gg_audit_color")
+> ### * gg_audit_color
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: gg_audit_color
+> ### Title: Audit Color Palette for Accessibility Issues
+> ### Aliases: gg_audit_color
+> 
+> ### ** Examples
+> 
+> library(ggplot2)
+> p <- ggplot(mtcars, aes(wt, mpg, color = factor(cyl))) +
++   geom_point() +
++   scale_color_manual(values = c("red", "green", "blue"))
+> gg_audit_color(p)
+$issues
+[1] "Red-green color combination detected (problematic for 8% of males with deuteranopia/protanopia)"
+
+$warnings
+[1] "Some colors have low contrast - may be hard to distinguish"
+
+$suggestions
+[1] "Use colorblind-safe palettes: viridis::scale_color_viridis() or RColorBrewer"
+
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("gg_audit_color", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+
+detaching ‘package:ggplot2’
+
+> nameEx("gg_audit_labels")
+> ### * gg_audit_labels
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: gg_audit_labels
+> ### Title: Audit Plot Labels and Annotations
+> ### Aliases: gg_audit_labels
+> 
+> ### ** Examples
+> 
+> library(ggplot2)
+> p <- ggplot(mtcars, aes(wt, mpg, color = factor(cyl))) +
++   geom_point()
+> gg_audit_labels(p)
+$issues
+[1] "Label 'factor(cyl)' contains programming syntax"
+
+$warnings
+[1] "Plot has no title"
+
+$suggestions
+[1] "Add a descriptive title: labs(title = 'Your Title Here')"
+[2] "Clean up label: labs(colour = 'Human Readable Name')"    
+
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("gg_audit_labels", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+
+detaching ‘package:ggplot2’
+
+> nameEx("gg_audit_scales")
+> ### * gg_audit_scales
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: gg_audit_scales
+> ### Title: Audit Scales and Axes for Misleading Practices
+> ### Aliases: gg_audit_scales
+> 
+> ### ** Examples
+> 
+> library(ggplot2)
+> p <- ggplot(mtcars, aes(wt, mpg)) +
++   geom_point() +
++   ylim(15, 35)
+> gg_audit_scales(p)
+$issues
+character(0)
+
+$warnings
+[1] "Unusual aspect ratio (5.11) may distort perception of relationships"
+
+$suggestions
+[1] "Consider using coord_fixed() for appropriate aspect ratio"
+
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("gg_audit_scales", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+
+detaching ‘package:ggplot2’
+
+> nameEx("gg_audit_text")
+> ### * gg_audit_text
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: gg_audit_text
+> ### Title: Audit Text Elements for Readability
+> ### Aliases: gg_audit_text
+> 
+> ### ** Examples
+> 
+> library(ggplot2)
+> p <- ggplot(mtcars, aes(x = rownames(mtcars), y = mpg)) +
++   geom_col() +
++   theme(axis.text.x = element_text(size = 6))
+> gg_audit_text(p)
+$issues
+character(0)
+
+$warnings
+[1] "Axis text size (6pt) is very small and may be hard to read"
+[2] "Many x-axis labels (32) - text may overlap"                
+
+$suggestions
+[1] "Increase axis text size: theme(axis.text = element_text(size = 10))"                                                  
+[2] "Consider: 1) Rotating labels with angle = 45, 2) Using fewer categories, or 3) Flipping coordinates with coord_flip()"
+
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("gg_audit_text", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+
+detaching ‘package:ggplot2’
+
+> nameEx("gg_simulate_cvd")
+> ### * gg_simulate_cvd
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: gg_simulate_cvd
+> ### Title: Simulate Colorblind Vision
+> ### Aliases: gg_simulate_cvd
+> 
+> ### ** Examples
+> 
+> library(ggplot2)
+> p <- ggplot(mtcars, aes(wt, mpg, color = factor(cyl))) +
++   geom_point() +
++   scale_color_manual(values = c("red", "green", "blue"))
+> gg_simulate_cvd(p, type = "deutan")
+Simulating deutan color vision deficiency...
+Original colors: green, red, blue
+Simulated colors: #EFD63A, #A39000, #003DFB
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("gg_simulate_cvd", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+
+detaching ‘package:ggplot2’
+
+> nameEx("gg_suggest_fixes")
+> ### * gg_suggest_fixes
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: gg_suggest_fixes
+> ### Title: Generate Code Suggestions to Fix Issues
+> ### Aliases: gg_suggest_fixes
+> 
+> ### ** Examples
+> 
+> library(ggplot2)
+> p <- ggplot(mtcars, aes(wt, mpg, color = factor(cyl))) +
++   geom_point() +
++   scale_color_manual(values = c("red", "green", "blue"))
+> 
+> # Get suggestions
+> gg_suggest_fixes(p)
+
+====================================
+    GGenemy Fix Suggestions
+====================================
+
+Copy and add these layers to your plot:
+
+your_plot <- ggplot(...) +
+  geom_*(...) +
+
+  # COLOR FIXES
+  # Replace with colorblind-safe palette
+  scale_color_viridis_d(option = 'plasma') +
+  # Use high-contrast palette
+  scale_color_brewer(palette = 'Set1') +
+
+  # SCALE FIXES
+  # Fix aspect ratio
+  coord_fixed(ratio = 1) +
+
+  # LABEL FIXES
+  # Clean up labels - replace with human-readable text
+  labs(
+    x = 'Descriptive X Label',
+    y = 'Descriptive Y Label',
+    color = 'Group Name'
+  ) +
+  # Add descriptive title
+  labs(title = 'Your Descriptive Title Here') +
+
+  theme_minimal()  # Optional: clean theme
+
+====================================
+  Manual Fixes Required:
+====================================
+1. Replace programming syntax in labels with descriptive text
+2. Add a descriptive title
+
+TIP: Use auto_fix = TRUE to automatically apply some fixes:
+     fixed_plot <- gg_suggest_fixes(your_plot, auto_fix = TRUE)
+
+> 
+> # Auto-fix the plot
+> p_fixed <- gg_suggest_fixes(p, auto_fix = TRUE)
+Scale for colour is already present.
+Adding another scale for colour, which will replace the existing scale.
+
+=== Auto-Fixed Plot ===
+Applied 3 fixes automatically.
+
+Note: 2 issues require manual fixing:
+  1. Replace programming syntax in labels with descriptive text
+  2. Add a descriptive title
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("gg_suggest_fixes", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> ### * <FOOTER>
+> ###
+> cleanEx()
+
+detaching ‘package:ggplot2’
+
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.696 0.028 0.724 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

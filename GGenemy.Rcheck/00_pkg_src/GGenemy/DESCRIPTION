@@ -1,5 +1,6 @@
 Package: GGenemy
-Title: Audit 'ggplot2' Visualizations for Accessibility and Best Practices
+Title: Audit 'ggplot2' Visualizations for Accessibility and Best
+        Practices
 Version: 0.1.0
 Authors@R: 
     person("Andy Man Yeung", "Tai", , "andy.tai@stat.ubc.ca", role = c("aut", "cre"))
@@ -17,15 +18,13 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-Imports:
-    ggplot2,
-    colorspace,
-    grDevices
+Imports: ggplot2, colorspace, grDevices
 URL: https://github.com/andytai7/GGenemy
 BugReports: https://github.com/andytai7/GGenemy/issues
-Suggests: 
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
+Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2025-10-22 23:00:39 UTC; andytai
+Author: Andy Man Yeung Tai [aut, cre]
+Maintainer: Andy Man Yeung Tai <andy.tai@stat.ubc.ca>

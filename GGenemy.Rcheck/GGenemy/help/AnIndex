@@ -1,0 +1,11 @@
+apply_fixes	apply_fixes
+generate_fix_code	generate_fix_code
+gg_audit	gg_audit
+gg_audit_accessibility	gg_audit_accessibility
+gg_audit_color	gg_audit_color
+gg_audit_labels	gg_audit_labels
+gg_audit_scales	gg_audit_scales
+gg_audit_text	gg_audit_text
+gg_simulate_cvd	gg_simulate_cvd
+gg_suggest_fixes	gg_suggest_fixes
+print.gg_fix_suggestions	print.gg_fix_suggestions

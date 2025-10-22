@@ -1,0 +1,11 @@
+gg_audit                Comprehensive Audit of ggplot2 Visualization
+gg_audit_accessibility
+                        Comprehensive Accessibility Audit
+gg_audit_color          Audit Color Palette for Accessibility Issues
+gg_audit_labels         Audit Plot Labels and Annotations
+gg_audit_scales         Audit Scales and Axes for Misleading Practices
+gg_audit_text           Audit Text Elements for Readability
+gg_simulate_cvd         Simulate Colorblind Vision
+gg_suggest_fixes        Generate Code Suggestions to Fix Issues
+print.gg_fix_suggestions
+                        Print method for fix suggestions
